@@ -1,0 +1,17 @@
+@model IEnumerable<string>
+
+<table class="table">
+	<thead>
+		<tr>
+			<th>ParameterName</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var n in Model)
+		{
+			<tr>
+				<td>@n</td>
+			</tr>
+		}
+	</tbody>
+</table>

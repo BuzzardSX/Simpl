@@ -1,0 +1,20 @@
+@model DepartmentItem
+
+<div class="card">
+	<div class="card-body">
+		<h5 class="card-title">@Model.Name</h5>
+		@if (Model.Wells == null)
+		{
+			<div>отсутствуют</div>
+		}
+		else
+		{
+			<div>
+				@foreach (var w in Model.Wells)
+				{
+					<div class="badge rounded-pill bg-primary">@w</div>
+				}
+			</div>
+		}
+	</div>
+</div>

@@ -1,0 +1,31 @@
+@page
+@model IndexModel
+@{
+	ViewData["Title"] = "Home page";
+}
+
+<div>
+	<div class="nav nav-tabs">
+		<div class="nav-item">
+			<input id="well-parameters-tab" name="wellParameterList" class="nav-link" type="button" value="Задание #1" onclick="loadTab(event)" />
+		</div>
+		<div class="nav-item">
+			<input id="wells-tab" name="wellList" class="nav-link" type="button" value="Задание #2" onclick="loadTab(event)" />
+		</div>
+		<div class="nav-item">
+			<input id="wells-tab" name="departmentList" class="nav-link" type="button" value="Задание #3" onclick="loadTab(event)" />
+		</div>
+	</div>
+	<div id="content" class="tab-content"></div>
+</div>
+
+<script>
+	fetch("?handler=wellParameterList")
+		.then(r => r.text())
+		.then(t => content.innerHTML = t);
+
+	async function loadTab(e) {
+		const resp = await fetch(`?handler=${e.target.name}`);
+		content.innerHTML = await resp.text();
+	}
+</script>

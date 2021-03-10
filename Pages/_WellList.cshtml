@@ -1,0 +1,29 @@
+@model IEnumerable<WellItem>
+
+<div class="row row-cols-2">
+	@foreach (var i in Model)
+	{
+		<div class="col">
+			<div class="card">
+				<div class="card-body">
+					<div class="card-title h5">@i.Well</div>
+					<table class="table table-sm">
+						<thead>
+							<th>ParameterName</th>
+							<th>Min</th>
+							<th>Max</th>
+							<th>Avg</th>
+							<th>Med</th>
+						</thead>
+						<tbody>
+							@foreach (var p in i.Parameters)
+							{
+								<partial name="_WellItemParameter" model="p" />
+							}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	}
+</div>
